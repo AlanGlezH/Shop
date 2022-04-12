@@ -1,0 +1,15 @@
+/Users/alanglezh/Shop/Shop.Infrastructure/bin/Debug/net6.0/Shop.Infrastructure.deps.json
+/Users/alanglezh/Shop/Shop.Infrastructure/bin/Debug/net6.0/Shop.Infrastructure.dll
+/Users/alanglezh/Shop/Shop.Infrastructure/bin/Debug/net6.0/Shop.Infrastructure.pdb
+/Users/alanglezh/Shop/Shop.Infrastructure/bin/Debug/net6.0/Shop.Domain.dll
+/Users/alanglezh/Shop/Shop.Infrastructure/bin/Debug/net6.0/Shop.Domain.pdb
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.csproj.AssemblyReference.cache
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.AssemblyInfoInputs.cache
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.AssemblyInfo.cs
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.csproj.CopyComplete
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.dll
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/refint/Shop.Infrastructure.dll
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/Shop.Infrastructure.pdb
+/Users/alanglezh/Shop/Shop.Infrastructure/obj/Debug/net6.0/ref/Shop.Infrastructure.dll
