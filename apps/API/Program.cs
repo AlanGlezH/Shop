@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Shop.API.Swagger;
+using Shop.User.Domain;
+using Shop.User.Infrastructure;
+using Shop.User.Application.SearchAll;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddApiVersioning(options =>
 {
@@ -18,33 +20,28 @@ builder.Services.AddApiVersioning(options =>
     options.ReportApiVersions = true;
     //Only versions [ApiController] defaults to 
     options.UseApiBehavior = true;
-
 });
 
 builder.Services.AddVersionedApiExplorer(setup =>
-   {
-       setup.GroupNameFormat = "'v'VVV";
-       setup.SubstituteApiVersionInUrl = true;
-   });
-
-
-
+{
+    setup.GroupNameFormat = "'v'VVV";
+    setup.SubstituteApiVersionInUrl = true;
+});
 
 builder.Services.AddSwaggerGen(options =>
 {
     options.EnableAnnotations();
     options.OperationFilter<SwaggerDefaultValues>();
-    // integrate xml comments
-
-
 });
 
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
+builder.Services.AddTransient<UserRepository, InMemoryUserRepository>();
+
+builder.Services.AddTransient<SearchAllUsersQueryHandler, SearchAllUsersQueryHandler>();
 
 var app = builder.Build();
 
-var versionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -53,6 +50,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(
         options =>
         {
+            var versionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
+
             foreach (var apiDescription in versionProvider.ApiVersionDescriptions)
             {
                 options.SwaggerEndpoint($"/swagger/{apiDescription.GroupName}/swagger.json",
