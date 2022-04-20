@@ -6,6 +6,7 @@ using Shop.API.Swagger;
 using Shop.User.Domain;
 using Shop.User.Infrastructure;
 using Shop.User.Application.SearchAll;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,9 +37,12 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
-builder.Services.AddTransient<UserRepository, InMemoryUserRepository>();
 
+builder.Services.AddTransient<UserRepository, InMemoryUserRepository>();
+builder.Services.AddTransient<UserSearcher, UserSearcher>();
 builder.Services.AddTransient<SearchAllUsersQueryHandler, SearchAllUsersQueryHandler>();
+
+builder.Services.AddMediatR(typeof(SearchAllUsersQuery));
 
 var app = builder.Build();
 

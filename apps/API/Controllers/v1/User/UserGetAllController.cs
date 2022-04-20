@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Shop.User.Application;
 using Shop.User.Application.SearchAll;
-using Shop.User.Domain;
+using MediatR;
+using System.Diagnostics;
 
 namespace Shop.API.Controllers.v1.User;
 
@@ -12,19 +12,18 @@ namespace Shop.API.Controllers.v1.User;
 public class UserGetAllController : ControllerBase
 {
     private readonly ILogger<UserGetAllController> _logger;
-    private readonly UserRepository _userRepository;
-    public UserGetAllController(ILogger<UserGetAllController> logger, UserRepository userRepository)
+    private readonly IMediator _mediator;
+
+    public UserGetAllController(ILogger<UserGetAllController> logger, IMediator mediator)
     {
         _logger = logger;
-        _userRepository = userRepository;
-
+        _mediator = mediator;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllUsers()
     {
-        var searcher = new SearchAllUsersQueryHandler(new UserSearcher(_userRepository));
-        var usersResponse = await searcher.Handle(new SearchAllUsersQuery());
+        var usersResponse = await _mediator.Send(new SearchAllUsersQuery());
         return Ok(usersResponse.Users);
     }
 }

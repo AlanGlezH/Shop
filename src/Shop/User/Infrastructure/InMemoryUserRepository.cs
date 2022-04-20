@@ -21,7 +21,7 @@ public class InMemoryUserRepository : UserRepository
              new UserName("Username"),
              new Password("ssss")
         );
-        Console.WriteLine(user.Id.Value);
+
         return await Task.FromResult(new List<ShopUser>()
         {
             user

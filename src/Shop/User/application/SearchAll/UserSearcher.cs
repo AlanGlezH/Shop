@@ -15,7 +15,6 @@ public class UserSearcher
     public async Task<UsersResponse> Search()
     {
         var users = await userRepository.SearchAll();
-        Console.WriteLine(users.FirstOrDefault().Name.Value);
         return new UsersResponse(users
                 .Select(user =>
                     new UserResponse(
