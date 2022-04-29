@@ -3,15 +3,16 @@ using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Shop.API.Swagger;
-using Shop.User.Domain;
-using Shop.User.Infrastructure;
+using Shop.API.Extension.DependencyInjection;
 using Shop.User.Application.SearchAll;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddControllers();
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddApiVersioning(options =>
 {
     options.AssumeDefaultVersionWhenUnspecified = true;
@@ -38,9 +39,9 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 
-builder.Services.AddTransient<UserRepository, InMemoryUserRepository>();
-builder.Services.AddTransient<UserSearcher, UserSearcher>();
-builder.Services.AddTransient<SearchAllUsersQueryHandler, SearchAllUsersQueryHandler>();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure();
+
 
 builder.Services.AddMediatR(typeof(SearchAllUsersQuery));
 
@@ -71,3 +72,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

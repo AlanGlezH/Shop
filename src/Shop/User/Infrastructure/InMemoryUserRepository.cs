@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Shop.User.Domain;
 
@@ -17,9 +17,9 @@ public class InMemoryUserRepository : UserRepository
 
             new UserId("1"),
             new Name("Alan"),
-             new LastName("Gonzalez"),
-             new UserName("Username"),
-             new Password("ssss")
+            new LastName("Gonzalez"),
+            new UserName("Username"),
+            new Password("ssss")
         );
 
         return await Task.FromResult(new List<ShopUser>()
