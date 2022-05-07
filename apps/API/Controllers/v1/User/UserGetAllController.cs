@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shop.User.Application.SearchAll;
 using MediatR;
 using System.Diagnostics;

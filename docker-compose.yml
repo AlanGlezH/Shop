@@ -1,0 +1,24 @@
+﻿version: '3.4'
+
+services:
+  api:
+    container_name: integration-tests
+    image: mcr.microsoft.com/dotnet/sdk:6.0
+    volumes:
+      - ./:/testing
+    working_dir: /testing/test/apps/WebAPI
+    command:
+        [
+        "dotnet",
+        "test"
+    ]
+  db:
+    container_name: sql-server-database
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1433:1433
+    volumes:
+      - ~/apps/mssql/data:/var/lib/mssqlql/data
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=mssql1Ipw
